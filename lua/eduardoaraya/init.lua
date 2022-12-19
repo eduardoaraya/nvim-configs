@@ -1,0 +1,5 @@
+require("eduardoaraya.plugins-setup")
+require("eduardoaraya.core.options")
+require("eduardoaraya.core.colorscheme")
+require("eduardoaraya.core.keymaps")
+require("eduardoaraya.plugins.nvim-tree")
