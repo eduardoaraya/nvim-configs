@@ -51,7 +51,9 @@ return packer.startup(function(use)
     use("tpope/vim-surround")
     use("vim-scripts/ReplaceWithRegister")
     use("numToStr/Comment.nvim")
-
+    
+    use("nvim-telescope/telescope.nvim")
+    use("nvim-telescope/telescope-file-browser.nvim")
     
     if (packer_bootstrap) then     
         print("sync packers")
