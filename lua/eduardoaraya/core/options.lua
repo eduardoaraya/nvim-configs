@@ -7,7 +7,7 @@ opt.number = true
 -- tabs & identations
 
 opt.tabstop = 4
-opt.shiftwidth = 4
+opt.shiftwidth = 4 
 opt.expandtab = true
 opt.autoindent = true
 
@@ -24,9 +24,10 @@ opt.cursorline = true
 
 
 -- aparence
-opt.termguicolors = false
+opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+opt.guifont="JetBrains Mono"
 
 -- backspace
 -- opt.backspace = "indent,eol,smart"

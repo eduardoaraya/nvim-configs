@@ -3,7 +3,6 @@ local cmd = vim.cmd
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
- 
     if fn.empty(fn.glob(install_path)) > 0 then
         fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
         cmd [[packadd packer.nvim]]
@@ -39,7 +38,9 @@ return packer.startup(function(use)
 
      
 	-- THEME 
-    use("dracula/vim")
+    --use("dracula/vim")
+    --use("rafamadriz/neon")
+    use({ "kaicataldo/material.vim", branch="main" })
 
     -- UTILS
     use("christoomey/vim-tmux-navigator")
@@ -52,9 +53,35 @@ return packer.startup(function(use)
     use("vim-scripts/ReplaceWithRegister")
     use("numToStr/Comment.nvim")
     
+    -- TELESCOPE
     use("nvim-telescope/telescope.nvim")
     use("nvim-telescope/telescope-file-browser.nvim")
     
+    -- AUTOCOMPLETION
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+
+    -- SNIPPETS
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
+    use("rafamadriz/friendly-snippets")
+   
+    -- LSP
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
+    use("neovim/nvim-lspconfig")
+    
+    use("hrsh7th/cmp-nvim-lsp")
+    use({ "glepnir/lspsaga.nvim", branch = "main" })
+    use("jose-elias-alvarez/typescript.nvim")
+    use("onsails/lspkind.nvim")
+    
+
+    -- ERROR LENS
+    use("folke/trouble.nvim")
+
+
     if (packer_bootstrap) then     
         print("sync packers")
         require("packer").sync()
