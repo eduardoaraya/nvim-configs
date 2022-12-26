@@ -36,18 +36,19 @@ return packer.startup(function(use)
     use("wbthomason/packer.nvim")
     use("nvim-lua/plenary.nvim")
 
-     
 	-- THEME 
-    --use("dracula/vim")
-    --use("rafamadriz/neon")
+  -- use("dracula/vim")
+  -- use("rafamadriz/neon")
     use({ "kaicataldo/material.vim", branch="main" })
+    use("nvim-lualine/lualine.nvim")
 
     -- UTILS
     use("christoomey/vim-tmux-navigator")
     use("nvim-tree/nvim-tree.lua")
     use("kyazdani42/nvim-web-devicons")
     use("szw/vim-maximizer")
-    
+    use ('sheerun/vim-polyglot')
+
     -- ESSENTIALS
     use("tpope/vim-surround")
     use("vim-scripts/ReplaceWithRegister")

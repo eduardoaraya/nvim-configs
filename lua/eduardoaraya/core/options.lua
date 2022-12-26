@@ -2,12 +2,12 @@ local opt = vim.opt
 
 -- line numbers
 opt.ignorecase = true
-opt.number = true
-
+-- opt.number = true
+opt.relativenumber = true
 -- tabs & identations
 
-opt.tabstop = 4
-opt.shiftwidth = 4 
+opt.tabstop = 2
+opt.shiftwidth = 2 
 opt.expandtab = true
 opt.autoindent = true
 
@@ -28,7 +28,7 @@ opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
 opt.guifont="JetBrains Mono"
-
+opt.cursorcolumn = true
 -- backspace
 -- opt.backspace = "indent,eol,smart"
 
