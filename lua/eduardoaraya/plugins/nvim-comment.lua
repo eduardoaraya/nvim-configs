@@ -1,4 +1,4 @@
-local setup, comment = pcall(require, "Comment")
+local setup, comment = pcall(require, "nvim_comment")
 
 if not setup then 
     return

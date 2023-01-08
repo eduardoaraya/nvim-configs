@@ -4,7 +4,6 @@ if not cmp_status then
     return 
 end
 
-
 local luasnip_status, luasnip = pcall(require, "luasnip")
 
 require("luasnip/loaders/from_vscode").lazy_load()
@@ -27,8 +26,10 @@ cmp.setup({
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
     }),
     sources = cmp.config.sources({
+        { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
         { name = "path" },
+    }, {
+        { name = "buffer" },
     })
 })

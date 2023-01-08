@@ -30,6 +30,7 @@ mason_lspconfig.setup({
         "remark_ls",
         --"ocaml-lsp",
         --"phpactor",
+        "eslint",
         "pyright",
         "rescriptls",
         "reason_ls",

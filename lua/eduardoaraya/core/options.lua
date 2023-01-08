@@ -28,7 +28,13 @@ opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
 opt.guifont="JetBrains Mono"
-opt.cursorcolumn = true
+
+vim.highlight.DiagnosticError = "guifg=Red"
+vim.highlight.DiagnosticWarn = "guifg=DarkOrange"
+vim.highlight.DiagnosticInfo = "guifg=Blue"
+vim.highlight.Diagnostichint = "guifg=Green"
+
+-- opt.cursorcolumn = true
 -- backspace
 -- opt.backspace = "indent,eol,smart"
 
