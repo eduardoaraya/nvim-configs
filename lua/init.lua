@@ -11,16 +11,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local status_vim_options, _ = pcall(require, "options")
+local cmd_status, _ = pcall(require, "custom-cmd")
+if not cmd_status then 
+	print("There is no cmd")
+  return
+end
+local status_vim_options, _ = pcall(require, "custom-options")
 if not status_vim_options then 
 	print("There is no options")
   return
 end
-local status_keymaps, _ = pcall(require, "keymaps")
+local status_keymaps, _ = pcall(require, "custom-keymaps")
 if not status_vim_options then 
 	print("There is no options")
   return
 end
+
 local status_lazy, lazy = pcall(require, "lazy")
 if not status_lazy then 
 	print("There is no lazy.nvim")

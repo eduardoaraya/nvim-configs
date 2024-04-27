@@ -2,7 +2,7 @@ local opt = vim.opt
 
 -- line numbers
 opt.ignorecase = true
--- opt.number = true
+opt.number = true
 opt.relativenumber = true
 -- tabs & identations
 
@@ -22,12 +22,12 @@ opt.smartcase = true
 -- cursor
 opt.cursorline = true
 
-
 -- aparence
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
-opt.guifont="JetBrains Mono"
+opt.guifont= "JetBrains Mono"
+-- theme 
 
 vim.highlight.DiagnosticError = "guifg=Red"
 vim.highlight.DiagnosticWarn = "guifg=DarkOrange"
@@ -40,6 +40,5 @@ vim.highlight.Diagnostichint = "guifg=Green"
 -- clipboard
 opt.splitright = true
 opt.splitbelow = true
-
 
 opt.iskeyword:append("-")

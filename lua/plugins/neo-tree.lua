@@ -10,7 +10,7 @@ return {
     vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
     vim.keymap.set("n", "<leader>b", ":Neotree toggle<CR>", {})
     vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
-    vim.cmd(":Neotree filesystem reveal left")
+    -- vim.cmd(":Neotree filesystem reveal left")
   end,
 }
 
