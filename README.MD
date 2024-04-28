@@ -1,8 +1,5 @@
-# Conf nvim project
+# My Nvim setup
 
-# Installed packers
-
-# Options
-
-# Keymaps
+I am goals is to migrate from vscode to vim (nvim btw). This repository contains my current settings
+and plugins.
 
