@@ -1,43 +1,69 @@
 return {
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
-  "neovim/nvim-lspconfig",
-
-  config = function()
-    require("mason").setup({
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_peding = "➜",
-          package_unistalled = "✗"
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    config = function()
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_peding = "➜",
+            package_unistalled = "✗"
+          }
         }
-      }
-    })
+      })
+    end
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { 
+          "luau_lsp",
+          "rust_analyzer",
+          "angularls",
+          "bashls",
+          "clangd",
+          -- "csharp_ls",
+          "cmake",
+          "cssls",
+          "tailwindcss",
+          -- "dockersl",
+          "eslint",
+          "gopls",
+          -- "jsonsl",
+          "html",
+          "tsserver",
+          "markdown_oxide",
+          -- "ocamllsp",
+          "rescriptls",
+          "yamlls",
+        },
+        automatic_installation = true
+      })
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local lspconfig = require("lspconfig")
 
-    require("mason-lspconfig").setup({
-      ensure_installed = { 
-        "lua_sl",
-        "rust_analyzer",
-        "angularls",
-        "bashsl",
-        "clangd",
-        "charp_ls",
-        "cmake",
-        "css",
-        "dockersl",
-        "eslint",
-        "gopls",
-        "jsonsl",
-        "html",
-        "tsserver",
-        "markdown_oxide",
-        "ocamllsp",
-        "rescriptls",
-        "yamlls",
-      },
-      automatic_installation = true
-    })
+      lspconfig.angularls.setup({
+        capabilities = capabilities
+      })
+      lspconfig.tsserver.setup({
+        capabilities = capabilities
+      })
+      lspconfig.html.setup({
+        capabilities = capabilities
+      })
+      lspconfig.luau_lsp.setup({
+        capabilities = capabilities
+      })
 
-    require("lspconfig").angularsl.setup({})
-  end
+    end
+  }
 }
