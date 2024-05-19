@@ -26,7 +26,7 @@ opt.cursorline = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
-opt.guifont= "JetBrains Mono"
+opt.guifont = "Fira Code"
 -- theme 
 
 vim.highlight.DiagnosticError = "guifg=Red"

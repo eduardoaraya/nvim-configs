@@ -5,12 +5,34 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
+    {
+      's1n7ax/nvim-window-picker',
+      version = '2.*',
+      config = function()
+        require 'window-picker'.setup({
+          filter_rules = {
+            include_current_win = false,
+            autoselect_one = true,
+            bo = {
+              filetype = { 'neo-tree', "neo-tree-popup", "notify" },
+              buftype = { 'terminal', "quickfix" },
+            },
+          },
+        })
+      end,
+    },
   },
   config = function()
     vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-    vim.keymap.set("n", "<leader>b", ":Neotree toggle<CR>", {})
+    vim.keymap.set("n", "<leader>b", ":Neotree filesystem toggle<CR>", {})
     vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
     -- vim.cmd(":Neotree filesystem reveal left")
+    require("neo-tree").setup({
+        winbar = false,
+        statusline = false,
+        follow_current_file = { enabled = true },
+        hijack_netrw_behavior = "open_current",
+    })
   end,
 }
 
