@@ -77,6 +77,6 @@ return {
           root_dir = util.root_pattern("package.json");
         })
       end
-      vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
     end
+  }
 }
