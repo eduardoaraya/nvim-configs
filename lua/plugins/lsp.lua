@@ -1,3 +1,24 @@
+local servers = { 
+  "lua_ls",
+  "rust_analyzer",
+  "angularls",
+  "bashls",
+  "clangd",
+  -- "csharp_ls",
+  "cmake",
+  "cssls",
+  "tailwindcss",
+  -- "dockersl",
+  "eslint",
+  "gopls",
+  -- "jsonsl",
+  "html",
+  "tsserver",
+  "markdown_oxide",
+  -- "ocamllsp",
+  "rescriptls",
+  "yamlls",
+}
 return {
   {
     "williamboman/mason.nvim",
@@ -22,27 +43,7 @@ return {
     opts = { auto_install = true, },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { 
-          "luau_lsp",
-          "rust_analyzer",
-          "angularls",
-          "bashls",
-          "clangd",
-          -- "csharp_ls",
-          "cmake",
-          "cssls",
-          "tailwindcss",
-          -- "dockersl",
-          "eslint",
-          "gopls",
-          -- "jsonsl",
-          "html",
-          "tsserver",
-          "markdown_oxide",
-          -- "ocamllsp",
-          "rescriptls",
-          "yamlls",
-        },
+        ensure_installed = servers,
         automatic_installation = true
       })
     end
@@ -54,20 +55,28 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-
-      lspconfig.angularls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.tsserver.setup({
-        capabilities = capabilities
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities
-      })
-      lspconfig.luau_lsp.setup({
-        capabilities = capabilities
-      })
-
+      local util = require("lspconfig.util")
+      local on_attach = function(_, bufnr)
+        local attach_opts = { silent = true, buffer = bufnr }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, attach_opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, attach_opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, attach_opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, attach_opts)
+        vim.keymap.set('n', '<C-gh>', vim.lsp.buf.signature_help, attach_opts)
+        vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, attach_opts)
+        vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, attach_opts)
+        vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, attach_opts)
+        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, attach_opts)
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
+        vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
+      end
+      for _, lsp_server in ipairs(servers) do
+        lspconfig[lsp_server].setup({ 
+          capabilities = capabilities,
+          on_attach = on_attach,
+          root_dir = util.root_pattern("package.json");
+        })
+      end
     end
   }
 }
