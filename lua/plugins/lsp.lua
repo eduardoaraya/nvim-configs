@@ -1,7 +1,7 @@
-local servers = { 
+local servers = {
   "lua_ls",
   "rust_analyzer",
-  "angularls",
+--  "angularls",
   "bashls",
   "clangd",
   -- "csharp_ls",
@@ -38,6 +38,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    dependences = {"williamboman/mason.nvim"},
     lazy = false,
     priority = 2,
     opts = { auto_install = true, },
@@ -51,7 +52,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     lazy = false,
-    priority = 2,
+    dependences = {"williamboman/mason.nvim"},
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
@@ -71,10 +72,11 @@ return {
         vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
       end
       for _, lsp_server in ipairs(servers) do
-        lspconfig[lsp_server].setup({ 
+        lspconfig[lsp_server].setup({
           capabilities = capabilities,
           on_attach = on_attach,
-          root_dir = util.root_pattern("package.json");
+          root_dir = util.root_pattern("package.json", ".git"), -- TODO: Make this dynamic by the servers table... use the table with these configs
+          single_file_supporte = true,
         })
       end
     end

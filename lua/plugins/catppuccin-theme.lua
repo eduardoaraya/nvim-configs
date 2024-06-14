@@ -1,5 +1,6 @@
 return {
   "catppuccin/nvim",
+  priority = 50,
   config = function()
     require("catppuccin").setup({
       integrations = {

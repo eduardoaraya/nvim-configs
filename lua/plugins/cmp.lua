@@ -1,20 +1,14 @@
 return {
-  {
-    "hrsh7th/cmp-nvim-lsp"
-  },
-  {
-    "L3MON4D3/luaSnip",
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets",
-    }
-  },
+  "hrsh7th/cmp-nvim-lsp",
+  "L3MON4D3/luaSnip",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
   {
     "hrsh7th/nvim-cmp",
     config = function()
       local cmp = require("cmp")
       require("luasnip.loaders.from_vscode").lazy_load()
-
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -26,11 +20,13 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
+          ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+          ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-space"] = cmp.mapping.complete(), -- show completion suggestions
+          ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
         }),
         source = cmp.config.sources({
           { name = "nvim_lsp" },
@@ -40,4 +36,4 @@ return {
       })
     end
   }
-}
+ }
