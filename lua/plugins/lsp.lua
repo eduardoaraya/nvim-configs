@@ -1,24 +1,3 @@
-local servers = {
-  "lua_ls",
-  "rust_analyzer",
---  "angularls",
-  "bashls",
-  "clangd",
-  -- "csharp_ls",
-  "cmake",
-  "cssls",
-  "tailwindcss",
-  -- "dockersl",
-  "eslint",
-  "gopls",
-  -- "jsonsl",
-  "html",
-  "tsserver",
-  "markdown_oxide",
-  -- "ocamllsp",
-  "rescriptls",
-  "yamlls",
-}
 return {
   {
     "williamboman/mason.nvim",
@@ -44,7 +23,23 @@ return {
     opts = { auto_install = true, },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = servers,
+        ensure_installed = {
+          "lua_ls",
+          "rust_analyzer",
+          "angularls",
+          "bashls",
+          "clangd",
+          "cmake",
+          "cssls",
+          "tailwindcss",
+          "eslint",
+          "gopls",
+          "html",
+          "tsserver",
+          "markdown_oxide",
+          "rescriptls",
+          "yamlls",
+        },
         automatic_installation = true
       })
     end
@@ -71,14 +66,25 @@ return {
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
         vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
       end
-      for _, lsp_server in ipairs(servers) do
-        lspconfig[lsp_server].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          root_dir = util.root_pattern("package.json", ".git"), -- TODO: Make this dynamic by the servers table... use the table with these configs
-          single_file_supporte = true,
-        })
-      end
+      lspconfig.tsserver.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        root_dir = util.root_pattern("package.json", ".git"), -- TODO: Make this dynamic by the servers table... use the table with these configs
+        single_file_supporte = true,
+        init_options = {
+          preferences = {
+            importModuleSpecifierPreference = "relative",
+            importModuleSpecifierEnding = "minimal"
+          }
+        }
+      })
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+     -- for _, lsp_server in ipairs(servers) do
+     --   lspconfig[lsp_server].setup()
+     -- end
     end
   }
 }
