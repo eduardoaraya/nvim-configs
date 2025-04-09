@@ -2,14 +2,14 @@ return {
   'nvimdev/dashboard-nvim',
   event = 'VimEnter',
   config = function()
-    require('dashboard').setup({ 
+    require('dashboard').setup({
       theme = "doom",
       header = {}, --your header
       center = {
         {
           icon = ' ',
           icon_hl = 'Title',
-          desc = 'Find File           ',
+          desc = 'Find File',
           desc_hl = 'String',
           key = 'b',
           keymap = 'SPC f f',
@@ -25,7 +25,7 @@ return {
           key_format = ' %s', -- remove default surrounding `[]`
           action = 'lua print(3)'
         },
-      }, 
+      },
     })
   end,
   dependencies = { {'nvim-tree/nvim-web-devicons'}}

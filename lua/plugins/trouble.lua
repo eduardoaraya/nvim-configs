@@ -12,7 +12,7 @@ return {
       signs = {
         error = "✗",
         warning = "",
-        hint = "󰌵",
+        hint = "",
         information = ""
       },
     })

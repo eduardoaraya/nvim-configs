@@ -23,25 +23,40 @@ return {
     },
   },
   config = function()
-    vim.fn.sign_define("DiagnosticSignError",
-    {text = "✖", texthl = "DiagnosticSignError"})
-    vim.fn.sign_define("DiagnosticSignWarn",
-    {text = " ", texthl = "DiagnosticSignWarn"})
-    vim.fn.sign_define("DiagnosticSignInfo",
-    {text = " ", texthl = "DiagnosticSignInfo"})
-    vim.fn.sign_define("DiagnosticSignHint",
-    {text = "󰌵", texthl = "DiagnosticSignHint"})
-
     vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
     vim.keymap.set("n", "<leader>b", ":Neotree filesystem toggle<CR>", {})
     vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
     -- vim.cmd(":Neotree filesystem reveal left")
     require("neo-tree").setup({
-        winbar = false,
-        statusline = false,
-        follow_current_file = { enabled = true },
-        hijack_netrw_behavior = "open_current",
-
+      winbar = false,
+      statusline = false,
+      follow_current_file = { enabled = true },
+      hijack_netrw_behavior = "open_current",
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = '',
+          [vim.diagnostic.severity.WARN] = '',
+          [vim.diagnostic.severity.INFO] = '',
+          [vim.diagnostic.severity.HINT] = '󰌵',
+        },
+      },
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            -- Change type
+            added     = "✓",
+            deleted   = "✗",
+            modified  = "●",
+            renamed   = "●",
+            -- Status type
+            untracked = "",
+            ignored   = "",
+            unstaged  = "✧",
+            staged    = "✦",
+            conflict  = "",
+          }
+        }
+      }
     })
   end,
 }
