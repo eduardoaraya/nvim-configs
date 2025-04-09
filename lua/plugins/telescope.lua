@@ -5,11 +5,8 @@ return {
     "nvim-lua/plenary.nvim",
   },
   config = function()
-    local builtin = require("telescope.builtin")
-    local utils = require("telescope.utils")
-    local lsputils = require("lspconfig.util")
+    local builtin = require('telescope.builtin')
     vim.keymap.set("n", "<leader>ff", function()
-      print(lsputils.root_pattern(".git"))
       builtin.find_files({
         cwd = "%:p:h"
       })
@@ -17,5 +14,5 @@ return {
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-  end,
+   end,
 }
