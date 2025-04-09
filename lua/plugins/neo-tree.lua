@@ -32,15 +32,15 @@ return {
       statusline = false,
       follow_current_file = { enabled = true },
       hijack_netrw_behavior = "open_current",
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = '',
-          [vim.diagnostic.severity.WARN] = '',
-          [vim.diagnostic.severity.INFO] = '',
-          [vim.diagnostic.severity.HINT] = '󰌵',
-        },
-      },
       default_component_configs = {
+        diagnostics = {
+          symbols = {
+            error = "✗",
+            warn = "",
+            hint = "",
+            info = ""
+          }
+        },
         git_status = {
           symbols = {
             -- Change type
