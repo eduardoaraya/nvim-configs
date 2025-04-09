@@ -56,7 +56,7 @@ return {
             conflict  = "",
           }
         }
-      }
+      },
     })
   end,
 }
