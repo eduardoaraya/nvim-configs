@@ -30,8 +30,9 @@ return {
     require("neo-tree").setup({
       winbar = false,
       statusline = false,
-      follow_current_file = { enabled = true },
-      hijack_netrw_behavior = "open_current",
+      window = { position = "current" },
+      -- follow_current_file = { enabled = true },
+      -- hijack_netrw_behavior = "open_current",
       default_component_configs = {
         diagnostics = {
           symbols = {

@@ -8,7 +8,7 @@ return {
     trouble.setup({
       position = "left",
       use_diagnostic_sign = true,
-      icons = true,
+      --icons = true,
     })
 
     vim.fn.sign_define("DiagnosticSignError",

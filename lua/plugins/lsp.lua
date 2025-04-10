@@ -22,6 +22,21 @@ return {
       vim.lsp.protocol.make_client_capabilities(),
       cmp_lsp.default_capabilities())
 
+      -- TODO: Configure omnisharp to run inside a docker
+      --local lspconfig = require("lspconfig")
+      --local config = require("lspconfig.configs")
+      --config.docker_omnisharp = {
+        --  default_config = {
+          --    cmd = { "ncat", "0.0.0.0", "2000" },
+          --    root_dir = require('lspconfig/util').root_pattern("*.csproj", "*.sln"),
+          --    filetypes = { "cs", "vb" },
+          --    enable_editorconfig_support = true,
+          --    --enable_roslyn_analyzers = true,
+          --    organize_imports_on_format = true,
+          --  }
+          --}
+          --lspconfig.docker_omnisharp.setup({})
+
       require("fidget").setup({})
       require("mason").setup()
       require("mason-lspconfig").setup({
@@ -41,7 +56,10 @@ return {
           "markdown_oxide",
           "rescriptls",
           "yamlls",
-          "omnisharp"
+          "omnisharp",
+          "estlint",
+          "docker_ls",
+          "vtsls"
         },
         handlers = {
           function(server_name) -- default handler (optional)

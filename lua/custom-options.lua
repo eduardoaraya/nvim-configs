@@ -43,4 +43,5 @@ opt.splitbelow = true
 
 opt.iskeyword:append("-")
 
+vim.api.nvim_set_option("clipboard", "unnamed")
 vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
