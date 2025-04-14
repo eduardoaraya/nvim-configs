@@ -9,8 +9,10 @@ return {
       position = "left",
       use_diagnostic_sign = true,
       --icons = true,
+      win = {
+        type = "float"
+      }
     })
-
     vim.fn.sign_define("DiagnosticSignError",
     {text = "✗ ", texthl = "DiagnosticSignError"})
     vim.fn.sign_define("DiagnosticSignWarn",
@@ -20,7 +22,7 @@ return {
     vim.fn.sign_define("DiagnosticSignHint",
     {text = "", texthl = "DiagnosticSignHint"})
 
-    vim.keymap.set("n", "<leader>;", function() trouble.toggle() end)
+    vim.keymap.set("n", "<leader>;", trouble.toggle)
     vim.keymap.set("n", "<leader>;w", function() trouble.toggle("workspace_diagnostics") end)
     vim.keymap.set("n", "<leader>;d", function() trouble.toggle("document_diagnostics") end)
     vim.keymap.set("n", "<leader>;q", function() trouble.toggle("quickfix") end)

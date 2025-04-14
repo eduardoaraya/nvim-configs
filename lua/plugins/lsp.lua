@@ -11,6 +11,9 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "j-hui/fidget.nvim",
+    {
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+    }
   },
 
   config = function()
@@ -57,8 +60,8 @@ return {
           "rescriptls",
           "yamlls",
           "omnisharp",
-          "estlint",
-          "docker_ls",
+          -- "estlint",
+          -- "docker_ls",
           "vtsls"
         },
         handlers = {
@@ -99,6 +102,7 @@ return {
         }
       })
 
+      -- CMP config
       local cmp_select = { behavior = cmp.SelectBehavior.Select }
       cmp.setup({
         snippet = {
@@ -120,8 +124,20 @@ return {
         })
       })
 
+      require("lsp_lines").setup()
+      vim.fn.sign_define("DiagnosticSignError",
+      {text = "✗ ", texthl = "DiagnosticSignError"})
+      vim.fn.sign_define("DiagnosticSignWarn",
+      {text = " ", texthl = "DiagnosticSignWarn"})
+      vim.fn.sign_define("DiagnosticSignInfo",
+      {text = " ", texthl = "DiagnosticSignInfo"})
+      vim.fn.sign_define("DiagnosticSignHint",
+      {text = "", texthl = "DiagnosticSignHint"})
+      -- Diagnostic config
       vim.diagnostic.config({
-        -- update_in_insert = true,
+        virtual_text = true,
+        virtual_lines = false,
+        update_in_insert = false,
         float = {
           focusable = false,
           style = "minimal",

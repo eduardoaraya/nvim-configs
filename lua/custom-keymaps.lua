@@ -11,9 +11,8 @@ keymap.set("x", "<leader>p", [["_dP]])
 -- shortcuts
 keymap.set("n", "<C-s>", ":w<CR>")
 -- split window
-keymap.set("n", "<leader>[", "<C-w>v")
-keymap.set("n", "<leader>]", "<C-w>s")
-keymap.set("n", "<leader>=", "<C-w>=")
+keymap.set("n", "<leader><S-h>", "<C-w>S")
+keymap.set("n", "<leader><S-v>", "<C-w>v")
 keymap.set("n", "<leader>x", ":close<CR>")
 
 

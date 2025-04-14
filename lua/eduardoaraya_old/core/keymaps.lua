@@ -18,7 +18,7 @@ keymap.set("n", "<leader>b", ":NvimTreeToggle<CR>")
 keymap.set("n", "<leader>[", "<C-w>v")
 keymap.set("n", "<leader>]", "<C-w>s")
 keymap.set("n", "<leader>=", "<C-w>=")
-keymap.set("n", "<leader>x", ":close<CR>")	
+keymap.set("n", "<leader>x", ":close<CR>")
 
 
 -- manager tabs

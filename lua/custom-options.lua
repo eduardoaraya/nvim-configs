@@ -26,7 +26,8 @@ opt.linespace = 8
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
-opt.guifont = "Fira Code"
+opt.guifont = "JetBrains Mono"
+-- opt.highlight = true
 -- theme 
 
 vim.highlight.DiagnosticError = "guifg=Red"
