@@ -13,17 +13,19 @@ return {
     "j-hui/fidget.nvim",
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-    }
+    },
+    "peitalin/vim-jsx-typescript"
   },
 
   config = function()
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
-    local capabilities = vim.tbl_deep_extend(
-      "force",
-      {},
-      vim.lsp.protocol.make_client_capabilities(),
-      cmp_lsp.default_capabilities())
+    local capabilities = cmp_lsp.default_capabilities()
+   -- local capabilities = vim.tbl_deep_extend(
+   --   "force",
+   --   {},
+   --   vim.lsp.protocol.make_client_capabilities(),
+   --   cmp_lsp.default_capabilities())
 
       -- TODO: Configure omnisharp to run inside a docker
       --local lspconfig = require("lspconfig")
@@ -55,14 +57,15 @@ return {
           "eslint",
           "gopls",
           "html",
-          "tsserver",
+          -- "tsserver",
           "markdown_oxide",
           "rescriptls",
           "yamlls",
-          "omnisharp",
+          -- "omnisharp",
           -- "estlint",
           -- "docker_ls",
           "vtsls"
+          --"javascriptreact"
         },
         handlers = {
           function(server_name) -- default handler (optional)
@@ -125,14 +128,14 @@ return {
       })
 
       require("lsp_lines").setup()
-      vim.fn.sign_define("DiagnosticSignError",
-      {text = "✗ ", texthl = "DiagnosticSignError"})
-      vim.fn.sign_define("DiagnosticSignWarn",
-      {text = " ", texthl = "DiagnosticSignWarn"})
-      vim.fn.sign_define("DiagnosticSignInfo",
-      {text = " ", texthl = "DiagnosticSignInfo"})
-      vim.fn.sign_define("DiagnosticSignHint",
-      {text = "", texthl = "DiagnosticSignHint"})
+     -- vim.fn.sign_define("DiagnosticSignError",
+     -- {text = "✗ ", texthl = "DiagnosticSignError"})
+     -- vim.fn.sign_define("DiagnosticSignWarn",
+     -- {text = " ", texthl = "DiagnosticSignWarn"})
+     -- vim.fn.sign_define("DiagnosticSignInfo",
+     -- {text = " ", texthl = "DiagnosticSignInfo"})
+     -- vim.fn.sign_define("DiagnosticSignHint",
+     -- {text = "", texthl = "DiagnosticSignHint"})
       -- Diagnostic config
       vim.diagnostic.config({
         virtual_text = true,
