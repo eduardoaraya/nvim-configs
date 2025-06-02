@@ -14,7 +14,11 @@ return {
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
     },
-    "peitalin/vim-jsx-typescript"
+    "peitalin/vim-jsx-typescript",
+-- CSHARP
+   -- "iabdelkareem/csharp.nvim",
+   -- "mfussenegger/nvim-dap",
+   -- "Tastyep/structlog.nvim",
   },
 
   config = function()
@@ -61,7 +65,7 @@ return {
           "markdown_oxide",
           "rescriptls",
           "yamlls",
-          -- "omnisharp",
+          "omnisharp",
           -- "estlint",
           -- "docker_ls",
           "vtsls"

@@ -21,12 +21,12 @@ opt.cursorline = true
 
 -- aparence
 opt.wrap = false
-opt.linespace = 16
+opt.linespace = 8
 
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
-opt.guifont = "JetBrains Mono"
+opt.guifont = "Fira Code"
 -- opt.guifont = "Fira Code"
 -- opt.highlight = true
 -- theme 

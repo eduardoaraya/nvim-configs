@@ -1,4 +1,4 @@
-local opt = vim.opt 
+local opt = vim.opt
 
 -- line numbers
 opt.ignorecase = true
@@ -7,13 +7,13 @@ opt.relativenumber = true
 -- tabs & identations
 
 opt.tabstop = 2
-opt.shiftwidth = 2 
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 
 -- line
 opt.wrap = false
-opt.linespace = 3 
+opt.linespace = 3
 
 -- search
 opt.ignorecase = true
@@ -27,7 +27,7 @@ opt.cursorline = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
-opt.guifont="JetBrains Mono"
+opt.guifont="Fira Code"
 
 vim.highlight.DiagnosticError = "guifg=Red"
 vim.highlight.DiagnosticWarn = "guifg=DarkOrange"
